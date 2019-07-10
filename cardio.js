@@ -125,7 +125,17 @@ function countTotalCharacters(people) {
  * @param {string} letter
  * @returns {boolean}
  */
-function everyoneHasLetter(people, letter) {}
+function everyoneHasLetter(people, letter) {
+  let returnBool;
+  let counter = 0;
+  people.forEach(person => {
+    if(person.includes(letter)) {
+      counter++;
+    }
+  });
+  counter === people.length ? returnBool = true : returnBool = false;
+  return returnBool;
+}
 
 /**
  * Returns `true` if at least one person has `letter` in their name.
@@ -134,7 +144,15 @@ function everyoneHasLetter(people, letter) {}
  * @param {string} letter
  * @returns {boolean}
  */
-function someoneHasLetter(people, letter) {}
+function someoneHasLetter(people, letter) {
+  let returnedBool = false;
+  people.forEach(person => {
+    if(person.includes(letter)) {
+      returnedBool = true;
+    }
+  });
+  return returnedBool;
+}
 
 module.exports = {
   filterByLength,
