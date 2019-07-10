@@ -8,7 +8,16 @@
  * @param {number} length
  * @returns {string[]} filtered array
  */
-function filterByLength(people, length) {}
+function filterByLength(people, length) {
+  // let returnedArray = [];
+  // for(let i = 0; i < people.length; ++i) {
+  //   if(people[i].length > length) {
+  //     returnedArray.push(people[i]);
+  //   }
+  // }
+  // return returnedArray;
+  return people.filter(person => person.length > length);
+}
 
 /**
  * Returns an array of every nth person.
@@ -23,7 +32,18 @@ function filterByLength(people, length) {}
  *    everyNPerson(['Matt', 'Kim', 'Kanye', 'Obama', 'Hans'], 2)
  *    // → ['Matt', 'Kanye', 'Hans']
  */
-function everyNPerson(people, n) {}
+function everyNPerson(people, n) {
+  if(!n) {
+    return people;
+  }
+  let returnedArray = [];
+  people.forEach(person => {
+    if(people.indexOf(person) % n === 0) {
+      returnedArray.push(person);
+    }
+  });
+  return returnedArray;
+};
 
 /**
  * Returns an array where each entry is the person's intials
@@ -34,7 +54,17 @@ function everyNPerson(people, n) {}
  *    initials(['Kanye West', 'Barack Obama'])
  *    // → ['KW', 'BO']
  */
-function initials(people) {}
+function initials(people) {
+  let returnedArray = [];
+  let create = '';
+  people.forEach(person => {
+    create += person[0];
+    create += person[person.indexOf(' ') + 1];
+    returnedArray.push(create);
+    create = '';
+  });
+  return returnedArray;
+}
 
 /**
  * Returns an array where every person is prepended with their position in the array
@@ -45,28 +75,48 @@ function initials(people) {}
  *    peopleWithPosition(['Kanye', 'Barack'])
  *    // → ['1. Kanye', '2. Barack']
  */
-function peopleWithPosition(people) {}
+function peopleWithPosition(people) {
+  let returnedArray = [];
+  let create = '';
+  people.forEach(person => {
+    create += `${people.indexOf(person)}: `;
+    create += person;
+    returnedArray.push(create);
+    create = '';
+  });
+  return returnedArray;
+}
 
 /**
  * Sorts `people` by first name
  * @param {string[]} people
  * @returns {string[]} sorted array
  */
-function sortByFirstName(people) {}
+function sortByFirstName(people) {
+  return people.sort();
+}
 
 /**
  * Sorts `people` by last name
  * @param {string[]} people
  * @returns {string[]} sorted array
  */
-function sortByLastName(people) {}
+function sortByLastName(people) {
+  // people.sort((a, b) => {
+  //   return a[a.indexOf(' ') + 1] - b[b.indexOf(' ') + 1];
+  // });
+}
 
 /**
  * Counts all the characters in the people array (including spaces)
  * @param {Array} people Array of names
  * @return Number of characters
  */
-function countTotalCharacters(people) {}
+function countTotalCharacters(people) {
+  const reducer = (accumulator, current) => accumulator + current.length;
+  return people.reduce(reducer, 0);
+  
+}
 
 /**
  * Returns `true` if everyone in `people` has `letter` in their name.
