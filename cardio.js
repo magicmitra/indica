@@ -102,9 +102,27 @@ function sortByFirstName(people) {
  * @returns {string[]} sorted array
  */
 function sortByLastName(people) {
-  // people.sort((a, b) => {
-  //   return a[a.indexOf(' ') + 1] - b[b.indexOf(' ') + 1];
-  // });
+  let lastNameFirst = [];
+  let firstNameFirst = [];
+  people.forEach(person => {
+    // split the name
+    let lastNameSplit = person.split(' ');
+    // put last name 1st
+    let holder = `${lastNameSplit[1]} ${lastNameSplit[0]}`;
+    lastNameFirst.push(holder);
+  });
+  // theyre now in reverse. sort normally
+  lastNameFirst = lastNameFirst.sort();
+  // boom sorted
+  // now rearrange again
+  lastNameFirst.forEach(person => {
+    // split
+    let lastNameSplit2 = person.split(' ');
+    // put last name last
+    let holder2 = `${lastNameSplit2[1]} ${lastNameSplit2[0]}`;
+    firstNameFirst.push(holder2);
+  });
+  return firstNameFirst;
 }
 
 /**
