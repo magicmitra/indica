@@ -1,4 +1,4 @@
-// 🏃🏼🏊🏼🏋🏼🏄🏼 lol
+// 🏃🏼🏊🏼🏋🏼🏄🏼 
 
 /**
  * Filters people array based on total number of letters in their name (including spaces).
